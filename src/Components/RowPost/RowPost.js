@@ -7,9 +7,10 @@ import Youtube from 'react-youtube'
 function RowPost(props) {
     const [movies,setMovies] = useState([]);
     const [urlId,setUrlId] = useState('');
+
     useEffect(()=>{
         axios.get(props.url).then((response)=>{
-            console.log("@@@@@@@@@",response.data.results)
+            console.log(response.data.results)
             setMovies(response.data.results);
         }).catch(err=>{
             alert(err)
@@ -44,8 +45,9 @@ function RowPost(props) {
                     movies.map((movie,index)=>{
                         return(
                             <div>
-                            <img onClick={()=>handleMovie(movie.id)} className={props.isSmall ? 'small-poster' : 'poster'} src={imgUrl+movie.backdrop_path} alt="" key={index}/>
-                            <p>{movie.title || movie.name}</p>
+                            <img onClick={()=>handleMovie(movie.id)} className={props.isSmall ? 'small-poster' : 'poster'} 
+                                    src={props.isSmall ? imgUrl+movie.backdrop_path : imgUrl+movie.poster_path} alt="" key={index}/>
+                            <p>{props.isSmall ? movie.title || movie.name : null}</p>
                             </div>
                         )
                     })
