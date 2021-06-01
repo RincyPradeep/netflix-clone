@@ -9,6 +9,7 @@ function RowPost(props) {
     const [urlId,setUrlId] = useState('');
     useEffect(()=>{
         axios.get(props.url).then((response)=>{
+            console.log("@@@@@@@@@",response.data.results)
             setMovies(response.data.results);
         }).catch(err=>{
             alert(err)
@@ -36,14 +37,15 @@ function RowPost(props) {
     
     return (
         <div className='row'>
-            <h4>{props.title}</h4>
+            <h2>{props.title}</h2>
             <div className='posters'>
                 
                 {
                     movies.map((movie,index)=>{
                         return(
                             <div>
-                            <img onClick={()=>handleMovie(movie.id)} className={props.isSmall ? 'small-poster' : 'poster'} src={imgUrl+movie.poster_path} alt="" key={index}/>
+                            <img onClick={()=>handleMovie(movie.id)} className={props.isSmall ? 'small-poster' : 'poster'} src={imgUrl+movie.backdrop_path} alt="" key={index}/>
+                            <p>{movie.title || movie.name}</p>
                             </div>
                         )
                     })
