@@ -1,4 +1,3 @@
-// import axios from 'axios'
 import React,{useState,useEffect} from 'react'
 import axios from '../../axios'
 import { API_KEY, imgUrl } from '../../Constants/Constants';
@@ -10,7 +9,6 @@ function RowPost(props) {
     const [urlId,setUrlId] = useState('');
     useEffect(()=>{
         axios.get(props.url).then((response)=>{
-            console.log(response)
             setMovies(response.data.results);
         }).catch(err=>{
             alert(err)
@@ -38,13 +36,15 @@ function RowPost(props) {
     
     return (
         <div className='row'>
-            <h2>{props.title}</h2>
+            <h4>{props.title}</h4>
             <div className='posters'>
                 
                 {
-                    movies.map((movie)=>{
+                    movies.map((movie,index)=>{
                         return(
-                            <img onClick={()=>handleMovie(movie.id)} className={props.isSmall ? 'small-poster' : 'poster'} src={imgUrl+movie.backdrop_path} alt="" />
+                            <div>
+                            <img onClick={()=>handleMovie(movie.id)} className={props.isSmall ? 'small-poster' : 'poster'} src={imgUrl+movie.poster_path} alt="" key={index}/>
+                            </div>
                         )
                     })
                 }
