@@ -1,0 +1,101 @@
+.login{
+    color:#fff;
+    width:100vw;
+    min-height:100vh;
+    padding:30px;
+    background-image: linear-gradient(to top ,rgba(7, 7, 7, 0.52), rgba(14, 13, 13, 0.73)),url("https://assets.nflxext.com/ffe/siteui/vlv3/5a27cb25-33a9-4bcc-b441-95fefabcbd37/2548691d-4d8c-4d97-b96d-449d3cca5d7e/IN-en-20210823-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+    background-size: cover;
+    box-sizing: border-box;
+}
+.navbar__logo_home{
+    width: 150px;
+    padding-left: 20px;
+}
+.login-content-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-content{
+    width:35%;
+    /* height:530px; */
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(5, 5, 5);
+    color:#fff;
+    margin-top: 50px;
+    margin-bottom:50px;
+    padding: 50px;
+}
+.login-content form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.form-element{
+    height:50px;
+    margin:10px;
+    border:none;
+    outline: none;
+    color:#fff;
+    padding:3px 10px;
+    border-radius: 4px;
+}
+.login-content form input{   
+    background-color: #333;   
+}
+.login-content form button{
+    background-color: #e50914; 
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.login-sub1{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color:rgb(165, 161, 161);
+}
+.remember-me input{
+    margin-right: 10px;
+    padding: 10px;
+}
+.login-sub1 a{
+    text-decoration: none;
+    color:rgb(165, 161, 161);
+}
+.login-sub2{
+    margin-top:20px;
+    color:rgb(165, 161, 161);
+    font-size: 13px;
+}
+.login-sub2 p{
+    margin-top: 10px;
+}
+.login-sub2 .facebook{
+    display: flex;
+    align-items: center;
+    color:rgb(165, 161, 161);
+    text-decoration: none;
+}
+.facebook-text{
+    margin-left:10px;
+}
+.signup{
+    color:#fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+
+/* For small devices */
+@media (max-width: 1090px){
+    .login-content{
+        width:100%;
+    }
+}
+@media (max-width: 400px){
+    .login-content{
+        padding:30px 10px;
+    }
+}

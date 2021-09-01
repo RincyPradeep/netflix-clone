@@ -39,12 +39,11 @@ function RowPost(props) {
     return (
         <div className='row'>
             <h2>{props.title}</h2>
-            <div className='posters'>
-                
+            <div className='posters'>               
                 {
                     movies.map((movie,index)=>{
                         return(
-                            <div>
+                            <div key={index}>
                             <img onClick={()=>handleMovie(movie.id)} className={props.isSmall ? 'small-poster' : 'poster'} 
                                     src={props.isSmall ? imgUrl+movie.backdrop_path : imgUrl+movie.poster_path} alt="" key={index}/>
                             <p>{props.isSmall ? movie.title || movie.name : null}</p>

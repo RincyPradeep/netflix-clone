@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import "./NavBar.css"
+import {Link, useHistory} from 'react-router-dom'
+import {AuthContext, FirebaseContext} from '../../store/Context'
 
 function NavBar() {
+
+    const {user} =useContext(AuthContext)
+    const {firebase} = useContext(FirebaseContext)
+    const history = useHistory();
 
     const [show, handleShow] = useState(false);
     const [toggle, setToggle] = useState(false);
@@ -22,47 +28,60 @@ function NavBar() {
         });
 
         return () => {
-            window.removeEventListener("scroll");
+            window.removeEventListener("scroll",null);
         }
     }, [])
 
+    const handleLogout = () =>{
+        firebase.auth().signOut();
+        history.push('/login')
+    }
+
     return (
         <div className={`navbar ${show && "nav__black"}`}>
-            <div className="right">
-                <img className="navbar__logo" src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png' alt="" />
-
+            {/* -------left navbar-------------- */}
+            <div className="left">
+                <img className="navbar__logo" src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png' alt="logo" />
                 <nav className="browse_nav" onClick={checkToggle}>
                     <ul>
                         <li className="browse"><a>Browse</a></li>
-                        <li className="browse">{toggle ? <i class="fas fa-sort-up"></i> : <i class="fas fa-caret-down"></i>}</li>
+                        <li className="browse">{toggle ? <i className="fas fa-sort-up"></i> : <i class="fas fa-caret-down"></i>}</li>
                     </ul>
                 </nav>
 
-                <div className="right__nav">
+                <div className="left__nav">
                     <nav className={toggle ? "nav_active" : "nav_notactive"}>
                         <ul>
-                            <li className="active hide__right_navlinks"><a href="">Home</a></li>
-                            <li className="hide__right_navlinks"><a href="">TV Shows</a></li>
-                            <li className="hide__right_navlinks"><a href="">Movies</a></li>
-                            <li className="hide__right_navlinks"><a href="">New & Popular</a></li>
-                            <li className="hide__right_navlinks"><a href="">My List</a></li>
+                            <li className="active hide__left_navlinks"><Link to="#">Home</Link></li>
+                            <li className="hide__left_navlinks"><Link to="#">TV Shows</Link></li>
+                            <li className="hide__left_navlinks"><Link to="#">Movies</Link></li>
+                            <li className="hide__left_navlinks"><Link to="#">New & Popular</Link></li>
+                            <li className="hide__left_navlinks"><Link to="#">My List</Link></li>
                         </ul>
                     </nav>
                 </div>
             </div>
-
-            <div className="left">
-                <div className="left__nav">
+            {/* ----------right navbar------------- */}
+            <div className="right">
+                <div className="right__nav">
                     <nav>
                         <ul>
-                            <li className="hide__left_navlinks" ><a href=""><i class="fas fa-search"></i></a></li>
-                            <li className="hide__left_navlinks" ><a href="">CHILDREN</a></li>
-                            <li><a href=""><i class="fas fa-gift"></i></a></li>
-                            <li><a href=""><i class="fas fa-bell"></i></a></li>
-                            <li>
-                                <a href=""><img className="navbar__avatar" src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png" alt="" /></a>
+                            <li><i className="fas fa-search"></i></li>
+                            <li className="hide__right_navlinks" >CHILDREN</li>
+                            <li className="hide__right_navlinks" ><i className="fas fa-gift"></i></li>
+                            <li className="hide__right_navlinks" ><i className="fas fa-bell"></i></li>
+                            <li>                               
+                                    <img className="navbar__avatar" src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png" alt="avatar" />
+                                    <span style={{color:"#fff"}}>
+                                        {user && `Hi,${user.displayName}` }
+                                    </span>                                
                             </li>
-                            <li className="hide__left_navlinks"><i class="fas fa-caret-down"></i></li>
+                            <li className="logout" >
+                            {user && <span className="logout" onClick={()=>{
+                                            firebase.auth().signOut();
+                                            history.push('/login')
+                            }}>Logout</span>}
+                            </li>
                         </ul>
                     </nav>
                 </div>

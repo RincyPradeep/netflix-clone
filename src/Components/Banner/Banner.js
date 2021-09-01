@@ -15,7 +15,7 @@ function Banner() {
     
     return (
         <div style={{backgroundImage: `url(${(movie ? imgUrl+movie.backdrop_path : '')})`}} className="banner">
-            <div className="content">
+            <div className="banner-content">
                 <h1 className="title">{movie ? movie.title || movie.name : ''}</h1>
                 <div className="banner-buttons">
                     <button className="button">Play</button>

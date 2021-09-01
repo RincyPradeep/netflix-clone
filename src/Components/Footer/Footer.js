@@ -1,36 +1,37 @@
 import React from 'react'
 import './Footer.css'
+import {Link} from 'react-router-dom'
 
 function Footer() {
     return (
         <div className="footer">
             <div className="social-media-icons">
-                <a href="#"><i class="fab fa-facebook-square"></i></a>
-                <a href="#"><i class="fab fa-instagram-square"></i></a>
-                <a href="#"><i class="fab fa-twitter-square"></i></a>
-                <a href="#"><i class="fab fa-youtube-square"></i></a>
+                <Link to="#"><i className="fab fa-facebook-square"></i></Link>
+                <Link to="#"><i className="fab fa-instagram-square"></i></Link>
+                <Link to="#"><i className="fab fa-twitter-square"></i></Link>
+                <Link to="#"><i className="fab fa-youtube-square"></i></Link>
             </div>
             <div className="list-items">
                 <div className="column">
-                    <a href="#">Audio and Subtitles</a>
-                    <a href="#">Media Centre</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Contact Us</a>
+                    <Link to="#">Audio and Subtitles</Link>
+                    <Link to="#">Media Centre</Link>
+                    <Link to="#">Privacy</Link>
+                    <Link to="#">Contact Us</Link>
                 </div>
                 <div className="column">
-                    <a href="#">Audio Description</a>
-                    <a href="#">Investor Relations</a>
-                    <a href="#">Legal Notices</a>
+                    <Link to="#">Audio Description</Link>
+                    <Link to="#">Investor Relations</Link>
+                    <Link to="#">Legal Notices</Link>
                 </div>
                 <div className="column">
-                    <a href="#">Help Centre</a>
-                    <a href="#">Jobs</a>
-                    <a href="#">Cookie Preferences</a>
+                    <Link to="#">Help Centre</Link>
+                    <Link to="#">Jobs</Link>
+                    <Link to="#">Cookie Preferences</Link>
                 </div>
                 <div className="column">
-                    <a href="#">Gift Cards</a>
-                    <a href="#">Terms of Use</a>
-                    <a href="#">Corporate Information</a>
+                    <Link to="#">Gift Cards</Link>
+                    <Link to="#">Terms of Use</Link>
+                    <Link to="#">Corporate Information</Link>
                 </div>
             </div>
             <div className="service-button">
@@ -42,5 +43,4 @@ function Footer() {
         </div>
     )
 }
-
 export default Footer
