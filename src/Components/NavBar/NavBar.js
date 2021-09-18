@@ -32,11 +32,6 @@ function NavBar() {
         }
     }, [])
 
-    const handleLogout = () =>{
-        firebase.auth().signOut();
-        history.push('/login')
-    }
-
     return (
         <div className={`navbar ${show && "nav__black"}`}>
             {/* -------left navbar-------------- */}
@@ -66,7 +61,7 @@ function NavBar() {
                 <div className="right__nav">
                     <nav>
                         <ul>
-                            <li><i className="fas fa-search"></i></li>
+                            <li className="search"><input type="text" className="search-input"/><i className="fas fa-search"></i></li>
                             <li className="hide__right_navlinks" >CHILDREN</li>
                             <li className="hide__right_navlinks" ><i className="fas fa-gift"></i></li>
                             <li className="hide__right_navlinks" ><i className="fas fa-bell"></i></li>

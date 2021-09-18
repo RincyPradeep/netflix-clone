@@ -9,6 +9,7 @@ import { originals, action, comedy, trending, horror, romance, documentary } fro
 import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import {FirebaseContext,AuthContext} from './store/Context'
+import PageNotFound from './Components/PageNotFound/PageNotFound'
 
 function App() {
     const {setUser} = useContext(AuthContext)
@@ -27,7 +28,7 @@ function App() {
                 <Route exact path='/'>
                     <Home />
                 </Route>
-                <Route path="/login">
+                <Route exact path="/login">
                     <Login />
                 </Route>
                 
@@ -42,7 +43,11 @@ function App() {
                     <RowPost url={romance} title="Romance" isSmall />
                     <RowPost url={documentary} title="Documentaries" isSmall />
                     <Footer />
-                </Route>                       
+                </Route>    
+
+                <Route path="*">
+                    <PageNotFound />
+                </Route>                   
             </Switch>
             </BrowserRouter>
         </div>

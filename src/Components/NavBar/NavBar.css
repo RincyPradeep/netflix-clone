@@ -56,6 +56,22 @@
 .active a{
     font-weight: 700;
 }
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid #fff;
+    width:200px;
+    height:30px;
+    padding:5px;
+}
+
+.search-input{
+    background-color: transparent;
+    border:none;
+    outline: none;
+    color:#fff;
+}
 /* ------------------------------------- */
 .right__nav {
     display: flex;

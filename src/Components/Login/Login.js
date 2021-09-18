@@ -3,6 +3,8 @@ import './Login.css'
 import {Link, useHistory} from 'react-router-dom'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import { FirebaseContext } from '../../store/Context';
+import Loader from '../Loader/Loader';
+
 
 const Login = () => {
 
@@ -11,10 +13,13 @@ const Login = () => {
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+    const [loading,setLoading] =useState(false)
 
     const handleSignIn =(e) =>{
         e.preventDefault();
+        setLoading(true)
         firebase.auth().signInWithEmailAndPassword(email,password).then(()=>{
+            setLoading(false)
             history.push('/posts')
         }).catch((err)=>{
             alert("Invalid username or password")
@@ -23,6 +28,7 @@ const Login = () => {
 
     return (
         <div className="login">
+            {loading && <Loader />}
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png" alt="logo" className="navbar__logo_home" />
             <div className="login-content-wrapper">
                 <div className="login-content">
