@@ -23,6 +23,7 @@ const Login = () => {
             history.push('/posts')
         }).catch((err)=>{
             alert("Invalid username or password")
+            setLoading(false)
         })
     }
 
